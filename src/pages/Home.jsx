@@ -83,7 +83,7 @@ export default function Home() {
               onSubmit={handleLiveSearch}
               className="mt-8 grid gap-3 rounded-[2rem] border border-white/10 bg-black/58 p-3 shadow-2xl shadow-black/50 backdrop-blur md:grid-cols-[1fr_auto_auto]"
             >
-              <label className="relative block overflow-x-scroll">
+              <label className="relative block">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
                 <input
                   value={query}
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <div className="rounded-[2rem] border border-white/10 bg-black/62 p-4 shadow-2xl shadow-black/60 backdrop-blur-xl">
+          <div className="rounded-[2rem] border border-white/10 bg-black/62 p-4 shadow-2xl shadow-black/60 backdrop-blur-xl">
             <div className="flex items-center justify-between gap-3 p-2">
               <div>
                 <p className="text-xs font-bold uppercase text-aqua">RapidAPI menu radar</p>
@@ -149,7 +149,7 @@ export default function Home() {
                     className="h-20 w-20 rounded-2xl object-cover"
                   />
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-black text-white">{item.name}</p>
+                    <p className="text-sm font-black text-white">{item.name}</p>
                     <p className="mt-1 text-xs text-white/45">{item.restaurantName}</p>
                   </div>
                   <Link
@@ -162,7 +162,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
         </div>
       </section>
 
