@@ -53,7 +53,7 @@ export default function Home() {
 
   return (
     <div>
-      <section className="relative overflow-hidden border-b border-white/10">
+      <section className="relative border-b border-white/10">
         <div className="absolute inset-0">
           <SmartImage
             src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=86"
@@ -83,7 +83,7 @@ export default function Home() {
               onSubmit={handleLiveSearch}
               className="mt-8 grid gap-3 rounded-[2rem] border border-white/10 bg-black/58 p-3 shadow-2xl shadow-black/50 backdrop-blur md:grid-cols-[1fr_auto_auto]"
             >
-              <label className="relative block">
+              <label className="relative block overflow-x-scroll">
                 <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-white/35" />
                 <input
                   value={query}
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-black/62 p-4 shadow-2xl shadow-black/60 backdrop-blur-xl">
+          {/* <div className="rounded-[2rem] border border-white/10 bg-black/62 p-4 shadow-2xl shadow-black/60 backdrop-blur-xl">
             <div className="flex items-center justify-between gap-3 p-2">
               <div>
                 <p className="text-xs font-bold uppercase text-aqua">RapidAPI menu radar</p>
@@ -162,7 +162,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
