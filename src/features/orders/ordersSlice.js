@@ -5,7 +5,7 @@ const initialState = {
   activeOrderId: null,
 };
 
-const makeOrderId = () => `NB${Date.now().toString(36).toUpperCase().slice(-6)}`;
+const makeOrderId = () => `CR${Date.now().toString(36).toUpperCase().slice(-6)}`;
 
 const ordersSlice = createSlice({
   name: "orders",

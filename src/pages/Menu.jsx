@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import FoodCard from "../components/FoodCard";
+import SmartImage from "../components/SmartImage";
 import { allMenuItems, cuisineFilters } from "../data/restaurantData";
 import {
   fetchLiveFood,
@@ -23,7 +24,7 @@ export default function Menu() {
   const liveNotice = useSelector(selectLiveNotice);
   const [query, setQuery] = useState("");
   const [cuisine, setCuisine] = useState("all");
-  const [liveQuery, setLiveQuery] = useState("pizza");
+  const [liveQuery, setLiveQuery] = useState("");
 
   useEffect(() => {
     if (liveStatus === "idle") {
@@ -60,12 +61,13 @@ export default function Menu() {
     <div className="section-shell py-10">
       <section className="overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.055] shadow-2xl shadow-black/40">
         <div className="relative min-h-[340px]">
-          <img
+          <SmartImage
             src={
               restaurant?.heroImage ||
               "https://images.unsplash.com/photo-1543353071-10c8ba85a904?auto=format&fit=crop&w=1600&q=86"
             }
-            alt={restaurant?.name || "NoirBite menu spread"}
+            alt={restaurant?.name || "CraveRush menu spread"}
+            fallbackName={restaurant?.name || "food delivery menu spread"}
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/82 to-black/25" />
@@ -74,7 +76,7 @@ export default function Menu() {
               {restaurant ? restaurant.cuisine : "all kitchens"}
             </p>
             <h1 className="mt-3 max-w-3xl text-4xl font-black leading-tight text-white sm:text-5xl">
-              {restaurant ? restaurant.name : "The complete NoirBite menu"}
+              {restaurant ? restaurant.name : "The complete CraveRush menu"}
             </h1>
             <p className="mt-4 max-w-2xl text-base leading-7 text-white/70">
               {restaurant
@@ -103,8 +105,8 @@ export default function Menu() {
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
+            aria-label="Search menu"
             className="field h-14 pl-12"
-            placeholder="Search this menu..."
           />
         </div>
 
@@ -153,8 +155,8 @@ export default function Menu() {
             <input
               value={liveQuery}
               onChange={(event) => setLiveQuery(event.target.value)}
+              aria-label="Search RapidAPI live menu"
               className="field h-12 min-w-0"
-              placeholder="Try tacos"
             />
             <button
               type="submit"

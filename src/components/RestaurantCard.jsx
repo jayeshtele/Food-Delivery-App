@@ -1,13 +1,15 @@
 import { ArrowRight, Clock3, MapPin, Star } from "lucide-react";
 import { Link } from "react-router-dom";
+import SmartImage from "./SmartImage";
 
 export default function RestaurantCard({ restaurant }) {
   return (
     <article className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[0.055] shadow-2xl shadow-black/30 transition hover:-translate-y-1 hover:border-white/20">
       <div className="relative h-60">
-        <img
+        <SmartImage
           src={restaurant.heroImage}
           alt={restaurant.name}
+          fallbackName={`${restaurant.name} ${restaurant.cuisine}`}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />

@@ -1,4 +1,4 @@
-# NoirBite Food Delivery App
+# CraveRush Food Delivery App
 
 A responsive frontend food delivery experience built with React, React Router, Tailwind CSS, Redux Toolkit, and RapidAPI integration.
 

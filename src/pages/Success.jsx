@@ -2,6 +2,7 @@ import { ArrowRight, BadgeCheck, CreditCard, ReceiptText } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import OrderStatus from "../components/OrderStatus";
+import SmartImage from "../components/SmartImage";
 import { selectOrderById } from "../features/orders/ordersSlice";
 import { formatCurrency, formatShortTime } from "../utils/formatters";
 
@@ -66,9 +67,10 @@ export default function Success() {
             </Link>
           </div>
           <div className="relative min-h-[420px]">
-            <img
+            <SmartImage
               src="https://images.unsplash.com/photo-1526367790999-0150786686a2?auto=format&fit=crop&w=1400&q=86"
               alt="Fresh packed food delivery"
+              fallbackName="packed food delivery"
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />

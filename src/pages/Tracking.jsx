@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import OrderStatus from "../components/OrderStatus";
+import SmartImage from "../components/SmartImage";
 import {
   selectActiveOrderId,
   selectOrderById,
@@ -117,9 +118,10 @@ export default function Tracking() {
           <div className="mt-6 space-y-3">
             {order.items.map((item) => (
               <div key={item.id} className="flex items-center gap-3 rounded-2xl bg-white/[0.045] p-3">
-                <img
+                <SmartImage
                   src={item.image}
                   alt={item.name}
+                  fallbackName={item.name}
                   className="h-14 w-14 rounded-xl object-cover"
                 />
                 <div className="min-w-0 flex-1">

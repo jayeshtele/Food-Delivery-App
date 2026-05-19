@@ -1,4 +1,4 @@
-import { Menu, PackageCheck, ShoppingBag, Sparkles } from "lucide-react";
+import { Menu, PackageCheck, ShoppingBag } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import clsx from "clsx";
@@ -21,13 +21,15 @@ export default function Header({ onCartOpen }) {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link to="/" className="group flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl border border-acid/40 bg-acid text-ink shadow-glow">
-            <Sparkles className="h-5 w-5" />
-          </span>
+          <img
+            src="/logo.svg"
+            alt="CraveRush logo"
+            className="h-11 w-11 rounded-2xl border border-acid/40 bg-ink shadow-glow"
+          />
           <span className="leading-none">
-            <span className="block text-lg font-black text-white">NoirBite</span>
+            <span className="block text-lg font-black text-white">CraveRush</span>
             <span className="hidden text-xs font-semibold uppercase text-acid/80 sm:block">
-              dark kitchen delivery
+              food delivery express
             </span>
           </span>
         </Link>

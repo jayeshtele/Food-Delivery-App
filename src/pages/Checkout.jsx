@@ -9,6 +9,7 @@ import {
 } from "../features/cart/cartSlice";
 import { placeOrder } from "../features/orders/ordersSlice";
 import { formatCurrency } from "../utils/formatters";
+import SmartImage from "../components/SmartImage";
 
 const initialForm = {
   name: "",
@@ -149,7 +150,6 @@ export default function Checkout() {
                   value={form.name}
                   onChange={updateField("name")}
                   className="field"
-                  placeholder="Your name"
                 />
               </label>
               <label>
@@ -159,7 +159,6 @@ export default function Checkout() {
                   onChange={updateField("phone")}
                   className="field"
                   inputMode="tel"
-                  placeholder="10 digit mobile"
                 />
               </label>
               <label className="md:col-span-2">
@@ -168,7 +167,6 @@ export default function Checkout() {
                   value={form.address}
                   onChange={updateField("address")}
                   className="field min-h-28 resize-none"
-                  placeholder="House, street, area, city"
                 />
               </label>
               <label className="md:col-span-2">
@@ -177,7 +175,6 @@ export default function Checkout() {
                   value={form.instructions}
                   onChange={updateField("instructions")}
                   className="field"
-                  placeholder="Leave at reception, extra napkins..."
                 />
               </label>
             </div>
@@ -202,7 +199,6 @@ export default function Checkout() {
                   onChange={updateField("cardNumber")}
                   className="field"
                   inputMode="numeric"
-                  placeholder="4242 4242 4242 4242"
                 />
               </label>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -212,7 +208,6 @@ export default function Checkout() {
                     value={form.expiry}
                     onChange={updateField("expiry")}
                     className="field"
-                    placeholder="12/30"
                   />
                 </label>
                 <label>
@@ -222,7 +217,6 @@ export default function Checkout() {
                     onChange={updateField("cvc")}
                     className="field"
                     inputMode="numeric"
-                    placeholder="123"
                   />
                 </label>
               </div>
@@ -249,9 +243,10 @@ export default function Checkout() {
           <div className="space-y-3">
             {items.map((item) => (
               <div key={item.id} className="flex items-center gap-3 rounded-2xl bg-white/[0.045] p-3">
-                <img
+                <SmartImage
                   src={item.image}
                   alt={item.name}
+                  fallbackName={item.name}
                   className="h-14 w-14 rounded-xl object-cover"
                 />
                 <div className="min-w-0 flex-1">

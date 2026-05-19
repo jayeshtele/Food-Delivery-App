@@ -10,6 +10,7 @@ import {
   selectCartSubtotal,
 } from "../features/cart/cartSlice";
 import { formatCurrency } from "../utils/formatters";
+import SmartImage from "./SmartImage";
 
 export default function CartDrawer({ isOpen, onClose }) {
   const dispatch = useDispatch();
@@ -60,9 +61,10 @@ export default function CartDrawer({ isOpen, onClose }) {
                       key={item.id}
                       className="grid grid-cols-[72px_1fr] gap-4 rounded-3xl border border-white/10 bg-white/[0.045] p-3"
                     >
-                      <img
+                      <SmartImage
                         src={item.image}
                         alt={item.name}
+                        fallbackName={item.name}
                         className="h-20 w-20 rounded-2xl object-cover"
                       />
                       <div className="min-w-0">

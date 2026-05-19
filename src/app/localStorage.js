@@ -1,4 +1,4 @@
-const STORAGE_KEY = "noirbite-state";
+const STORAGE_KEY = "craverush-state";
 
 export function loadState() {
   if (typeof localStorage === "undefined") {

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useOutletContext } from "react-router-dom";
 import FoodCard from "../components/FoodCard";
 import RestaurantCard from "../components/RestaurantCard";
+import SmartImage from "../components/SmartImage";
 import { cuisineFilters } from "../data/restaurantData";
 import {
   fetchLiveFood,
@@ -22,13 +23,13 @@ const stats = [
 
 export default function Home() {
   const dispatch = useDispatch();
-  const { openCart } = useOutletContext();
+  const { locationLabel, openCart } = useOutletContext();
   const restaurants = useSelector(selectRestaurants);
   const liveItems = useSelector(selectLiveItems);
   const liveStatus = useSelector(selectLiveStatus);
   const liveNotice = useSelector(selectLiveNotice);
   const liveSource = useSelector(selectLiveSource);
-  const [query, setQuery] = useState("burger");
+  const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
 
   useEffect(() => {
@@ -54,9 +55,10 @@ export default function Home() {
     <div>
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0">
-          <img
+          <SmartImage
             src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=86"
             alt="Premium dark table food spread"
+            fallbackName="food delivery spread"
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black via-black/78 to-black/25" />
@@ -67,13 +69,13 @@ export default function Home() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-acid/30 bg-acid/10 px-4 py-2 text-sm font-bold text-acid">
               <LocateFixed className="h-4 w-4" />
-              Bengaluru kitchens online now
+              {locationLabel} kitchens online now
             </div>
             <h1 className="mt-7 text-5xl font-black leading-[1.02] text-white sm:text-6xl lg:text-7xl">
-              NoirBite
+              CraveRush
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
-              Dark-mode food delivery with electric menus, instant cart flow,
+              Food delivery with electric menus, instant cart flow,
               successful checkout, and live order tracking.
             </p>
 
@@ -86,8 +88,8 @@ export default function Home() {
                 <input
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
+                  aria-label="Search live food"
                   className="field h-14 pl-12"
-                  placeholder="Search burgers, ramen, biryani..."
                 />
               </label>
               <button
@@ -140,9 +142,10 @@ export default function Home() {
                   key={item.id}
                   className="flex items-center gap-4 rounded-3xl border border-white/10 bg-white/[0.045] p-3"
                 >
-                  <img
+                  <SmartImage
                     src={item.image}
                     alt={item.name}
+                    fallbackName={item.name}
                     className="h-20 w-20 rounded-2xl object-cover"
                   />
                   <div className="min-w-0 flex-1">
@@ -168,7 +171,7 @@ export default function Home() {
           <div>
             <p className="text-sm font-bold uppercase text-plasma">Choose a kitchen</p>
             <h2 className="mt-2 text-3xl font-black text-white sm:text-4xl">
-              Signature dark kitchens
+              Signature rush kitchens
             </h2>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-2">
