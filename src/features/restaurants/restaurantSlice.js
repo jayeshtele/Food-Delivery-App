@@ -22,7 +22,7 @@ const initialState = {
   liveItems: getFallbackLiveItems(""),
   liveQuery: "burger",
   liveSource: "demo",
-  notice: "Add VITE_RAPIDAPI_KEY to use live RapidAPI menu data.",
+  notice: "Getting live menu from RapidAPI, showing demo menu until then.",
   status: "idle",
 };
 

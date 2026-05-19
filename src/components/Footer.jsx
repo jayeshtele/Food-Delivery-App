@@ -9,7 +9,7 @@ const items = [
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-black">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/58 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+      <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-8 text-sm text-white/58 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8 mb-10 md:mb-0">
         <p>Built as a frontend-first food delivery experience with React and Redux Toolkit.</p>
         <div className="flex flex-wrap gap-3">
           {items.map(({ icon: Icon, label }) => (
