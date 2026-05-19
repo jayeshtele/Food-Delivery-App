@@ -1,0 +1,251 @@
+const img = (id) => `${id}?auto=format&fit=crop&w=1100&q=82`;
+
+export const cuisineFilters = [
+  { id: "all", label: "All" },
+  { id: "indian", label: "Indian" },
+  { id: "burgers", label: "Burgers" },
+  { id: "asian", label: "Asian" },
+  { id: "bowls", label: "Bowls" },
+  { id: "pizza", label: "Pizza" },
+];
+
+export const restaurants = [
+  {
+    id: "velvet-tandoor",
+    name: "Velvet Tandoor",
+    cuisine: "indian",
+    mood: "Smoky clay-oven classics",
+    rating: 4.9,
+    prepTime: "22-30 min",
+    distance: "1.8 km",
+    deliveryFee: 39,
+    accent: "#ffc247",
+    heroImage: img("https://images.unsplash.com/photo-1585937421612-70a008356fbe"),
+    tags: ["Tandoor", "North Indian", "Bestseller"],
+    menu: [
+      {
+        id: "velvet-butter-chicken",
+        name: "Velvet Butter Chicken",
+        price: 329,
+        rating: 4.9,
+        image: img("https://images.unsplash.com/photo-1603894584373-5ac82b2ae398"),
+        description: "Charred chicken, makhani sauce, smoked cream, kasuri finish.",
+        spice: "Medium",
+      },
+      {
+        id: "velvet-paneer-lababdar",
+        name: "Paneer Lababdar Stack",
+        price: 289,
+        rating: 4.8,
+        image: img("https://images.unsplash.com/photo-1631452180519-c014fe946bc7"),
+        description: "Paneer cubes, tomato cashew base, tandoori onion crush.",
+        spice: "Mild",
+      },
+      {
+        id: "velvet-garlic-naan",
+        name: "Black Garlic Naan",
+        price: 79,
+        rating: 4.7,
+        image: img("https://images.unsplash.com/photo-1601050690597-df0568f70950"),
+        description: "Fluffy naan with garlic butter, sesame, and fresh coriander.",
+        spice: "Low",
+      },
+    ],
+  },
+  {
+    id: "fireline-burgers",
+    name: "Fireline Burgers",
+    cuisine: "burgers",
+    mood: "Flame-grilled midnight fuel",
+    rating: 4.8,
+    prepTime: "18-26 min",
+    distance: "2.4 km",
+    deliveryFee: 49,
+    accent: "#ff4d6d",
+    heroImage: img("https://images.unsplash.com/photo-1550547660-d9450f859349"),
+    tags: ["Smash", "Loaded", "Late Night"],
+    menu: [
+      {
+        id: "fireline-double-smash",
+        name: "Double Voltage Smash",
+        price: 299,
+        rating: 4.9,
+        image: img("https://images.unsplash.com/photo-1568901346375-23c9450c58cd"),
+        description: "Double patty, molten cheddar, charred onion, plasma sauce.",
+        spice: "Medium",
+      },
+      {
+        id: "fireline-korean-crunch",
+        name: "Korean Crunch Burger",
+        price: 279,
+        rating: 4.8,
+        image: img("https://images.unsplash.com/photo-1606755962773-d324e9a13086"),
+        description: "Crispy fillet, gochujang glaze, slaw, toasted brioche.",
+        spice: "Hot",
+      },
+      {
+        id: "fireline-truffle-fries",
+        name: "Truffle Circuit Fries",
+        price: 169,
+        rating: 4.7,
+        image: img("https://images.unsplash.com/photo-1573080496219-bb080dd4f877"),
+        description: "Crisp fries, parmesan snow, truffle aioli, chives.",
+        spice: "Low",
+      },
+    ],
+  },
+  {
+    id: "neon-bao-labs",
+    name: "Neon Bao Labs",
+    cuisine: "asian",
+    mood: "Bao, ramen, and wok heat",
+    rating: 4.9,
+    prepTime: "20-28 min",
+    distance: "3.1 km",
+    deliveryFee: 45,
+    accent: "#32e5ff",
+    heroImage: img("https://images.unsplash.com/photo-1569718212165-3a8278d5f624"),
+    tags: ["Ramen", "Bao", "Wok"],
+    menu: [
+      {
+        id: "neon-tonkotsu-ramen",
+        name: "Glow Tonkotsu Ramen",
+        price: 349,
+        rating: 4.9,
+        image: img("https://images.unsplash.com/photo-1591814468924-caf88d1232e1"),
+        description: "Slow broth, noodles, jammy egg, chilli oil, scallion rain.",
+        spice: "Medium",
+      },
+      {
+        id: "neon-crispy-bao",
+        name: "Crispy Chilli Bao",
+        price: 239,
+        rating: 4.8,
+        image: img("https://images.unsplash.com/photo-1626200419199-391ae4be7a41"),
+        description: "Cloud bao, crunchy filling, pickles, electric chilli mayo.",
+        spice: "Hot",
+      },
+      {
+        id: "neon-wok-noodles",
+        name: "Carbon Wok Noodles",
+        price: 249,
+        rating: 4.7,
+        image: img("https://images.unsplash.com/photo-1612929633738-8fe44f7ec841"),
+        description: "High-heat noodles, peppers, garlic soy, sesame crunch.",
+        spice: "Medium",
+      },
+    ],
+  },
+  {
+    id: "orbit-bowls",
+    name: "Orbit Bowls",
+    cuisine: "bowls",
+    mood: "Clean bowls with big flavor",
+    rating: 4.7,
+    prepTime: "15-23 min",
+    distance: "1.1 km",
+    deliveryFee: 29,
+    accent: "#19ffa5",
+    heroImage: img("https://images.unsplash.com/photo-1546069901-ba9599a7e63c"),
+    tags: ["Healthy", "Protein", "Quick"],
+    menu: [
+      {
+        id: "orbit-avocado-bowl",
+        name: "Avocado Hyper Bowl",
+        price: 259,
+        rating: 4.8,
+        image: img("https://images.unsplash.com/photo-1512621776951-a57141f2eefd"),
+        description: "Quinoa, avocado, edamame, greens, lime tahini, seeds.",
+        spice: "Low",
+      },
+      {
+        id: "orbit-salmon-bowl",
+        name: "Teriyaki Salmon Bowl",
+        price: 429,
+        rating: 4.8,
+        image: img("https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7"),
+        description: "Salmon, rice, pickled cucumber, teriyaki glaze, nori.",
+        spice: "Low",
+      },
+      {
+        id: "orbit-protein-wrap",
+        name: "Green Engine Wrap",
+        price: 219,
+        rating: 4.6,
+        image: img("https://images.unsplash.com/photo-1626700051175-6818013e1d4f"),
+        description: "Herbed protein, crunchy greens, feta, mint yoghurt.",
+        spice: "Mild",
+      },
+    ],
+  },
+  {
+    id: "midnight-slice",
+    name: "Midnight Slice",
+    cuisine: "pizza",
+    mood: "Neo-Napoli pizza and sides",
+    rating: 4.8,
+    prepTime: "24-32 min",
+    distance: "2.8 km",
+    deliveryFee: 59,
+    accent: "#d7ff3f",
+    heroImage: img("https://images.unsplash.com/photo-1604382355076-af4b0eb60143"),
+    tags: ["Wood Fired", "Cheese", "Party"],
+    menu: [
+      {
+        id: "midnight-hot-honey",
+        name: "Hot Honey Pepperoni",
+        price: 389,
+        rating: 4.9,
+        image: img("https://images.unsplash.com/photo-1628840042765-356cda07504e"),
+        description: "Pepperoni, mozzarella, basil, chilli honey, crisp edges.",
+        spice: "Medium",
+      },
+      {
+        id: "midnight-burrata",
+        name: "Burrata Nightfall",
+        price: 449,
+        rating: 4.8,
+        image: img("https://images.unsplash.com/photo-1594007654729-407eedc4be65"),
+        description: "Tomato, burrata, pesto, roasted garlic, black olive dust.",
+        spice: "Low",
+      },
+      {
+        id: "midnight-dessert-pie",
+        name: "Choco Lava Pie",
+        price: 189,
+        rating: 4.7,
+        image: img("https://images.unsplash.com/photo-1563729784474-d77dbb933a9e"),
+        description: "Warm chocolate, cookie crumble, sea salt cream.",
+        spice: "Low",
+      },
+    ],
+  },
+];
+
+export const allMenuItems = restaurants.flatMap((restaurant) =>
+  restaurant.menu.map((item) => ({
+    ...item,
+    restaurantId: restaurant.id,
+    restaurantName: restaurant.name,
+    cuisine: restaurant.cuisine,
+    accent: restaurant.accent,
+    prepTime: restaurant.prepTime,
+  })),
+);
+
+export const getFallbackLiveItems = (query = "") => {
+  const term = query.trim().toLowerCase();
+  const matched = allMenuItems.filter((item) => {
+    const searchText = `${item.name} ${item.description} ${item.cuisine} ${item.restaurantName}`.toLowerCase();
+    return !term || searchText.includes(term);
+  });
+
+  const base = matched.length ? matched : allMenuItems;
+
+  return base.slice(0, 8).map((item, index) => ({
+    ...item,
+    id: `demo-live-${item.id}`,
+    source: "demo",
+    price: item.price + (index % 3) * 10,
+  }));
+};
