@@ -34,6 +34,13 @@ export async function searchRapidFood(query = "burger") {
   const host = import.meta.env.VITE_RAPIDAPI_HOST || DEFAULT_HOST;
   const baseUrl = import.meta.env.VITE_RAPIDAPI_BASE_URL || DEFAULT_BASE_URL;
 
+  if (!key || key === "your_rapidapi_key_here") {
+    return {
+      items: getFallbackLiveItems(query),
+      source: "demo",
+      notice: "Add VITE_RAPIDAPI_KEY to use live RapidAPI menu data.",
+    };
+  }
 
   const url = new URL("/recipes/list", baseUrl);
   url.searchParams.set("from", "0");
