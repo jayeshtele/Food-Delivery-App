@@ -30,7 +30,7 @@ const normalizeTastyRecipe = (recipe, index) => {
 };
 
 export async function searchRapidFood(query = "burger") {
-  const key = import.meta.env.VITE_RAPIDAPI_KEY || "your_rapidapi_key_here";
+  const key = import.meta.env.VITE_RAPIDAPI_KEY;
   const host = import.meta.env.VITE_RAPIDAPI_HOST || DEFAULT_HOST;
   const baseUrl = import.meta.env.VITE_RAPIDAPI_BASE_URL || DEFAULT_BASE_URL;
 
