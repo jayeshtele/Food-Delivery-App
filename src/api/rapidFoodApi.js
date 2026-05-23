@@ -30,9 +30,21 @@ const normalizeTastyRecipe = (recipe, index) => {
 };
 
 export async function searchRapidFood(query = "burger") {
-  const key = import.meta.env.VITE_RAPIDAPI_KEY;
-  const host = import.meta.env.VITE_RAPIDAPI_HOST || DEFAULT_HOST;
-  const baseUrl = import.meta.env.VITE_RAPIDAPI_BASE_URL || DEFAULT_BASE_URL;
+  const getRuntimeRapidApiKey = () => {
+    if (typeof window !== "undefined") {
+      // Global runtime override (e.g., injected by hosting provider)
+      if (window.__RAPIDAPI_KEY__) return window.__RAPIDAPI_KEY__;
+      if (window.__env__ && window.__env__.VITE_RAPIDAPI_KEY) return window.__env__.VITE_RAPIDAPI_KEY;
+      // Meta tag fallback: <meta name="rapidapi-key" content="...">
+      const meta = document.querySelector('meta[name="VITE_RAPIDAPI_KEY"], meta[name="rapidapi-key"]');
+      if (meta && meta.content) return meta.content;
+    }
+    return import.meta.env.VITE_RAPIDAPI_KEY;
+  };
+
+  const key = getRuntimeRapidApiKey();
+  const host = (typeof window !== "undefined" && (window.__RAPIDAPI_HOST__ || document.querySelector('meta[name="VITE_RAPIDAPI_HOST"]')?.content)) || import.meta.env.VITE_RAPIDAPI_HOST || DEFAULT_HOST;
+  const baseUrl = (typeof window !== "undefined" && (window.__RAPIDAPI_BASE_URL__ || document.querySelector('meta[name="VITE_RAPIDAPI_BASE_URL"]')?.content)) || import.meta.env.VITE_RAPIDAPI_BASE_URL || DEFAULT_BASE_URL;
 
   if (!key || key === "your_rapidapi_key_here") {
     return {
