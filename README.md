@@ -35,8 +35,6 @@ VITE_RAPIDAPI_BASE_URL=https://tasty.p.rapidapi.com
 
 `RAPIDAPI_KEY`, `RAPIDAPI_HOST`, and `RAPIDAPI_BASE_URL` also work. The build writes these values into `public/env.js`, which is ignored locally but bundled into the deployed site. If you add or change env vars after a deploy, trigger a fresh redeploy.
 
-For this frontend demo, a deployment fallback key is also included so the live menu still works on static hosts where environment variables are not configured. Environment variables take priority whenever they exist.
-
 Because this is intentionally a frontend project, the Vite environment variable is exposed to browser code. For production, place RapidAPI calls behind a backend or serverless proxy so the key is not shipped to users.
 
 ## Features

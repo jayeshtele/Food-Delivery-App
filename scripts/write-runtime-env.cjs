@@ -41,9 +41,7 @@ const readEnv = (...keys) => {
 };
 
 const runtimeEnv = {
-  VITE_RAPIDAPI_KEY:
-    readEnv("VITE_RAPIDAPI_KEY", "RAPIDAPI_KEY") ||
-    "0d7c2891c7mshd421c56fcc4a6d9p14b1fejsn8aa05b66f95b",
+  VITE_RAPIDAPI_KEY: readEnv("VITE_RAPIDAPI_KEY", "RAPIDAPI_KEY"),
   VITE_RAPIDAPI_HOST: readEnv("VITE_RAPIDAPI_HOST", "RAPIDAPI_HOST") || "tasty.p.rapidapi.com",
   VITE_RAPIDAPI_BASE_URL:
     readEnv("VITE_RAPIDAPI_BASE_URL", "RAPIDAPI_BASE_URL") || "https://tasty.p.rapidapi.com",
