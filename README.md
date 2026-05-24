@@ -23,6 +23,18 @@ The app calls the Tasty API through RapidAPI for live menu discovery. If no key 
 
 RapidAPI requests use the standard `X-RapidAPI-Key` and `X-RapidAPI-Host` headers documented by RapidAPI: https://docs.rapidapi.com/v2.0/docs/configuring-api-authentication
 
+## Deployment API Setup
+
+Set these environment variables in your hosting provider before building/deploying:
+
+```bash
+VITE_RAPIDAPI_KEY=your_rapidapi_key_here
+VITE_RAPIDAPI_HOST=tasty.p.rapidapi.com
+VITE_RAPIDAPI_BASE_URL=https://tasty.p.rapidapi.com
+```
+
+`RAPIDAPI_KEY`, `RAPIDAPI_HOST`, and `RAPIDAPI_BASE_URL` also work. The build writes these values into `public/env.js`, which is ignored locally but bundled into the deployed site. If you add or change env vars after a deploy, trigger a fresh redeploy.
+
 Because this is intentionally a frontend project, the Vite environment variable is exposed to browser code. For production, place RapidAPI calls behind a backend or serverless proxy so the key is not shipped to users.
 
 ## Features

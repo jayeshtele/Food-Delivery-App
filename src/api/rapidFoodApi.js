@@ -29,28 +29,48 @@ const normalizeTastyRecipe = (recipe, index) => {
   };
 };
 
-export async function searchRapidFood(query = "burger") {
-  const getRuntimeRapidApiKey = () => {
-    if (typeof window !== "undefined") {
-      // Global runtime override (e.g., injected by hosting provider)
-      if (window.__RAPIDAPI_KEY__) return window.__RAPIDAPI_KEY__;
-      if (window.__env__ && window.__env__.VITE_RAPIDAPI_KEY) return window.__env__.VITE_RAPIDAPI_KEY;
-      // Meta tag fallback: <meta name="rapidapi-key" content="...">
-      const meta = document.querySelector('meta[name="VITE_RAPIDAPI_KEY"], meta[name="rapidapi-key"]');
-      if (meta && meta.content) return meta.content;
-    }
-    return import.meta.env.VITE_RAPIDAPI_KEY;
-  };
+const readMetaContent = (name) => {
+  if (typeof document === "undefined") {
+    return "";
+  }
 
-  const key = getRuntimeRapidApiKey();
-  const host = (typeof window !== "undefined" && (window.__RAPIDAPI_HOST__ || document.querySelector('meta[name="VITE_RAPIDAPI_HOST"]')?.content)) || import.meta.env.VITE_RAPIDAPI_HOST || DEFAULT_HOST;
-  const baseUrl = (typeof window !== "undefined" && (window.__RAPIDAPI_BASE_URL__ || document.querySelector('meta[name="VITE_RAPIDAPI_BASE_URL"]')?.content)) || import.meta.env.VITE_RAPIDAPI_BASE_URL || DEFAULT_BASE_URL;
+  return document.querySelector(`meta[name="${name}"]`)?.content || "";
+};
+
+const getRuntimeEnv = () => {
+  const browserEnv = typeof window === "undefined" ? {} : window.__env__ || {};
+
+  return {
+    key:
+      browserEnv.VITE_RAPIDAPI_KEY ||
+      browserEnv.RAPIDAPI_KEY ||
+      readMetaContent("VITE_RAPIDAPI_KEY") ||
+      readMetaContent("rapidapi-key") ||
+      import.meta.env.VITE_RAPIDAPI_KEY,
+    host:
+      browserEnv.VITE_RAPIDAPI_HOST ||
+      browserEnv.RAPIDAPI_HOST ||
+      readMetaContent("VITE_RAPIDAPI_HOST") ||
+      import.meta.env.VITE_RAPIDAPI_HOST ||
+      DEFAULT_HOST,
+    baseUrl:
+      browserEnv.VITE_RAPIDAPI_BASE_URL ||
+      browserEnv.RAPIDAPI_BASE_URL ||
+      readMetaContent("VITE_RAPIDAPI_BASE_URL") ||
+      import.meta.env.VITE_RAPIDAPI_BASE_URL ||
+      DEFAULT_BASE_URL,
+  };
+};
+
+export async function searchRapidFood(query = "burger") {
+  const { key, host, baseUrl } = getRuntimeEnv();
 
   if (!key || key === "your_rapidapi_key_here") {
     return {
       items: getFallbackLiveItems(query),
       source: "demo",
-      notice: "Add VITE_RAPIDAPI_KEY to use live RapidAPI menu data.",
+      notice:
+        "RapidAPI key is missing in this build. Set VITE_RAPIDAPI_KEY or RAPIDAPI_KEY in your deployment environment.",
     };
   }
 
@@ -68,7 +88,10 @@ export async function searchRapidFood(query = "burger") {
   });
 
   if (!response.ok) {
-    throw new Error(`RapidAPI request failed with ${response.status}`);
+    const message = await response.text();
+    throw new Error(
+      `RapidAPI request failed with ${response.status}${message ? `: ${message}` : ""}`,
+    );
   }
 
   const data = await response.json();

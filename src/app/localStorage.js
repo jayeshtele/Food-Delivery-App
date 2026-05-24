@@ -7,7 +7,15 @@ export function loadState() {
 
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : undefined;
+    if (!raw) {
+      return undefined;
+    }
+
+    const parsed = JSON.parse(raw);
+    return {
+      cart: parsed.cart,
+      orders: parsed.orders,
+    };
   } catch {
     return undefined;
   }
