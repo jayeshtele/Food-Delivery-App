@@ -3,6 +3,7 @@ import { getFoodFallbackImage } from "../utils/imageFallback";
 
 const DEFAULT_HOST = "tasty.p.rapidapi.com";
 const DEFAULT_BASE_URL = "https://tasty.p.rapidapi.com";
+const DEPLOYMENT_DEMO_KEY = "0d7c2891c7mshd421c56fcc4a6d9p14b1fejsn8aa05b66f95b";
 
 const toPrice = (index) => 189 + ((index * 37) % 260);
 
@@ -46,7 +47,8 @@ const getRuntimeEnv = () => {
       browserEnv.RAPIDAPI_KEY ||
       readMetaContent("VITE_RAPIDAPI_KEY") ||
       readMetaContent("rapidapi-key") ||
-      import.meta.env.VITE_RAPIDAPI_KEY,
+      import.meta.env.VITE_RAPIDAPI_KEY ||
+      DEPLOYMENT_DEMO_KEY,
     host:
       browserEnv.VITE_RAPIDAPI_HOST ||
       browserEnv.RAPIDAPI_HOST ||
